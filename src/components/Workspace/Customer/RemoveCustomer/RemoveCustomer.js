@@ -2,17 +2,23 @@ import React, { Component } from "react";
 import './RemoveCustomer.css';
 
 export default class RemoveCustomer extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       showConfirm: false
     };
 
     this.toggle = this.toggle.bind( this );
+    this.remove = this.remove.bind(this);
   }
 
   toggle() {
     this.setState({ showConfirm: !this.state.showConfirm });
+  }
+
+  remove(){
+    
+      this.props.removeCustomer(this.props.id);
   }
 
 
@@ -25,7 +31,7 @@ export default class RemoveCustomer extends Component {
           ?
             <div id="RemoveCustomer__confirmationContainer">
               <button id="RemoveCustomer__cancelBtn" onClick={ this.toggle }> Cancel </button>
-              <button className="RemoveCustomer__removeBtn" onClick={ '' }> Confirm </button>
+              <button className="RemoveCustomer__removeBtn" onClick={ this.remove }> Confirm </button>
             </div>
           :
             null
